@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Pinned header: buttons + status -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Buttons row -->
+        <LinearLayout
+            android:id="@+id/buttonRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:baselineAligned="false">
+
+            <Button
+                android:id="@+id/btnLoadRandom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Load image" />
+
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="0dp" />
+
+            <Button
+                android:id="@+id/btnSolve"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Solve"
+                android:enabled="false" />
+        </LinearLayout>
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ready"
+            android:textSize="14sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+
+    </LinearLayout>
+
+    <!-- Scrollable content (images) -->
+    <ScrollView
+        android:id="@+id/scrollContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/contentRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Input label -->
+            <TextView
+                android:id="@+id/txtInputLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Input"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="8dp"
+                android:paddingBottom="6dp" />
+
+            <!-- Input image -->
+            <ImageView
+                android:id="@+id/imgInput"
+                android:layout_width="match_parent"
+                android:layout_height="420dp"
+                android:contentDescription="Input Sudoku"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:background="@android:color/darker_gray" />
+
+            <!-- Solved label -->
+            <TextView
+                android:id="@+id/txtOutputLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Solved"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="16dp"
+                android:paddingBottom="6dp" />
+
+            <!-- Output image -->
+            <ImageView
+                android:id="@+id/imgOutput"
+                android:layout_width="match_parent"
+                android:layout_height="420dp"
+                android:contentDescription="Solved Sudoku"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:background="@android:color/darker_gray" />
+
+            <!-- Extra bottom padding so last image isn't flush -->
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
